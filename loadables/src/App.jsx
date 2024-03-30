@@ -1,22 +1,19 @@
-
-import './App.css'
-
+import "./App.css";
+import { RecoilRoot, useRecoilValue } from "recoil";
 
 function App() {
-  return <>
-
-  </>
+	return (
+		<>
+			<RecoilRoot>
+				<Todo />
+				<h3>App is up and running</h3>
+			</RecoilRoot>
+		</>
+	);
 }
 
-function Todo({id}) {
-
-   return (
-    <>
-      {todo.contents.title}
-      {todo.contents.description}
-      <br />
-    </>
-  )
+function Todo() {
+	return <></>;
 }
 
-export default App
+export default App;
