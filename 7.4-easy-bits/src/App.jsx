@@ -25,7 +25,6 @@ function Main() {
 	const jobCount = useRecoilValue(jobItem);
 	const messageCount = useRecoilValue(messageItem);
 	const notificationsCount = useRecoilValue(notifsItem);
-
 	const TotalNumOfNotifs = useRecoilValue(TotalNotifsCount);
 
 	return (
