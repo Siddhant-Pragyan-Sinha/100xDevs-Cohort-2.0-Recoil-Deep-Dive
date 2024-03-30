@@ -8,9 +8,6 @@ export const getData = selector({
 	key: "fetchData",
 	get: async ({ get }) => {
 		const url = get(urlAtom);
-
-		for (let i = 0; i < 10000000; i++) {}
-
 		const response = await fetch(url);
 		if (!response.ok) {
 			throw response.error;

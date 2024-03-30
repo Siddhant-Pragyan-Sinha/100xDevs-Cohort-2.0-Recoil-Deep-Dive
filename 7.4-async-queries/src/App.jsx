@@ -1,7 +1,7 @@
 import React from "react";
 
-import { useRecoilValue, RecoilRoot, useRecoilState } from "recoil";
-import { getData, dataFetchFromSource, totalNotifs } from "./atoms";
+import { useRecoilValue, RecoilRoot } from "recoil";
+import {  dataFetchFromSource, totalNotifs } from "./atoms";
 
 function App() {
 	return (
