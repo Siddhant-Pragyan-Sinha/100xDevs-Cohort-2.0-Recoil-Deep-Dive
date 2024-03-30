@@ -1,39 +1,40 @@
-
-import './App.css'
-import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
-import { jobsAtom, messagingAtom, networkAtom, notificationsAtom, totalNotificationSelector } from './atoms'
-import { useMemo } from 'react'
-//RecoilRoot
+import { RecoilRoot, useRecoilValue } from "recoil";
+import "./App.css";
+import {
+	TotalNotifsCount,
+	jobItem,
+	messageItem,
+	networkItem,
+	notifsItem,
+} from "./store/atom";
 
 function App() {
-  return <RecoilRoot>
-    <MainApp />
-  </RecoilRoot>
+	return (
+		<div>
+			<RecoilRoot>
+				<Main />
+			</RecoilRoot>
+		</div>
+	);
 }
 
-function MainApp() {
-  const networkNotificationCount = useRecoilValue(networkAtom)
-  const jobsAtomCount = useRecoilValue(jobsAtom);
-  const notificationsAtomCount = useRecoilValue(notificationsAtom)
-  const messagingAtomCount = useRecoilValue(messagingAtom)
-  const totalNotificationCount = useRecoilValue(totalNotificationSelector);
+export default App;
 
-  // const totalNotificationCount = useMemo(() => {
-  //   return networkNotificationCount + jobsAtomCount + notificationsAtomCount + messagingAtomCount;
-  // }, [networkNotificationCount, jobsAtomCount, notificationsAtomCount, messagingAtomCount]) 
+function Main() {
+	const netwValue = useRecoilValue(networkItem);
+	const jobCount = useRecoilValue(jobItem);
+	const messageCount = useRecoilValue(messageItem);
+	const notificationsCount = useRecoilValue(notifsItem);
+	const TotalNumOfNotifs = useRecoilValue(TotalNotifsCount);
 
-  return (
-    <>
-      <button>Home</button>
-      
-      <button>My network ({networkNotificationCount >= 100 ? "99+" : networkNotificationCount})</button>
-      <button>Jobs {jobsAtomCount}</button>
-      <button>Messaging ({messagingAtomCount})</button>
-      <button>Notifications ({notificationsAtomCount})</button>
-
-      <button>Me ({totalNotificationCount})</button>
-    </>
-  )
+	return (
+		<div>
+			<button>Home</button>
+			<button>My Network ({netwValue > 100 ? "99+" : netwValue})</button>
+			<button>Jobs ({jobCount})</button>
+			<button>Messaging ({messageCount})</button>
+			<button>Notifications ({notificationsCount})</button>
+			<button>Me ({TotalNumOfNotifs})</button>
+		</div>
+	);
 }
-
-export default App
