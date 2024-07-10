@@ -1,38 +1,30 @@
 
+import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil'
 import './App.css'
-import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
-import { jobsAtom, messagingAtom, networkAtom, notificationsAtom, totalNotificationSelector } from './atoms'
-import { useMemo } from 'react'
+import { jobsAtom, messagingAtom, networkAtom, notificationsAtom } from './atoms'
+
 //RecoilRoot
 
 function App() {
   return <RecoilRoot>
-    <MainApp />
-  </RecoilRoot>
+    <MainApp/>
+  </RecoilRoot>  
 }
 
-function MainApp() {
-  const networkNotificationCount = useRecoilValue(networkAtom)
-  const jobsAtomCount = useRecoilValue(jobsAtom);
-  const notificationsAtomCount = useRecoilValue(notificationsAtom)
-  const messagingAtomCount = useRecoilValue(messagingAtom)
-  const totalNotificationCount = useRecoilValue(totalNotificationSelector);
-
-  // const totalNotificationCount = useMemo(() => {
-  //   return networkNotificationCount + jobsAtomCount + notificationsAtomCount + messagingAtomCount;
-  // }, [networkNotificationCount, jobsAtomCount, notificationsAtomCount, messagingAtomCount]) 
+function MainApp(){
+  const networkNotificationCount=useRecoilValue(networkAtom);
+  const[messaginNotificationCount,setMessagingNotificationCount]=useRecoilState(messagingAtom); // to retrieve value as well as alter the state
+  const jobsNotificationCount=useRecoilValue(jobsAtom);
+  const notificationAtomCount=useRecoilValue(notificationsAtom); //To retrieve just the value
 
   return (
-    <>
-      <button>Home</button>
-      
-      <button>My network ({networkNotificationCount >= 100 ? "99+" : networkNotificationCount})</button>
-      <button>Jobs {jobsAtomCount}</button>
-      <button>Messaging ({messagingAtomCount})</button>
-      <button>Notifications ({notificationsAtomCount})</button>
-
-      <button>Me ({totalNotificationCount})</button>
-    </>
+  <>
+  <button>Home</button>
+  <button>My Network ({networkNotificationCount >= 100? "99+":networkNotificationCount})</button>
+  <button>Jobs ({jobsNotificationCount})</button>
+  <button>Notifications ({notificationAtomCount})</button>
+  <button>Me</button>
+  </>
   )
 }
 
