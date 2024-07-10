@@ -31,6 +31,8 @@ function MainApp(){
   <button>Messaging ({messaginNotificationCount})</button>
   <button>Me ({totalNotifications})</button>
   </>
+
+  hello
   )
 }
 
