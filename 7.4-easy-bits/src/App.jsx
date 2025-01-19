@@ -18,9 +18,9 @@ function MainApp() {
   const messagingAtomCount = useRecoilValue(messagingAtom)
   const totalNotificationCount = useRecoilValue(totalNotificationSelector);
 
-  // const totalNotificationCount = useMemo(() => {
-  //   return networkNotificationCount + jobsAtomCount + notificationsAtomCount + messagingAtomCount;
-  // }, [networkNotificationCount, jobsAtomCount, notificationsAtomCount, messagingAtomCount]) 
+  // info const totalNotificationCount = useMemo(() => {
+  //   info return networkNotificationCount + jobsAtomCount + notificationsAtomCount + messagingAtomCount;
+  // info }, [networkNotificationCount, jobsAtomCount, notificationsAtomCount, messagingAtomCount]);
 
   return (
     <>
